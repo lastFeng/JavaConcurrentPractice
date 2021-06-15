@@ -14,7 +14,7 @@ public class CardCommodityService implements ICommodity {
     public void sendCommodity(String uId, String commodityId, String bizId, Map<String, String> extMap) throws Exception {
         String mobile = queryUserMobile(uId);
         iQiYiCardService.grantToken(mobile, bizId);
-        logger.info("请求参数[爱奇艺兑换卡] => uId：{0} commodityId：{1} bizId：{2} extMap：{3}", uId, commodityId, bizId, extMap.toString());
+        logger.info("请求参数[爱奇艺兑换卡] => uId：{0} commodityId：{1} bizId：{2} extMap：{3}", uId, commodityId == null ? "" : commodityId, bizId == null ? "" : bizId, extMap == null ? "" : extMap.toString());
         logger.info("测试结果[爱奇艺兑换卡]：success");
     }
 
