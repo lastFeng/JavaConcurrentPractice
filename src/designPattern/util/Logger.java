@@ -1,9 +1,9 @@
 package designPattern.util;
 
-import java.util.Formatter;
+import java.text.MessageFormat;
 
 public class Logger {
     public void info(String format, Object... argArray) {
-        System.out.println(String.format(format, argArray));
+        System.out.println(MessageFormat.format(format, argArray));
     }
 }
