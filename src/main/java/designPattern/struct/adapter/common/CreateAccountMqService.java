@@ -1,5 +1,6 @@
 package designPattern.struct.adapter.common;
 
+import com.alibaba.fastjson.JSON;
 import designPattern.struct.adapter.base.mq.CreateAccount;
 import designPattern.util.Logger;
 
@@ -8,11 +9,11 @@ public class CreateAccountMqService {
 
     public void onMessage(String message) {
 
-//        CreateAccount mq = JSON.parseObject(message, CreateAccount.class);
-//
-//        mq.getNumber();
-//        mq.getAccountDate();
+        CreateAccount mq = JSON.parseObject(message, CreateAccount.class);
 
-        // ... 处理自己的业务
+        mq.getNumber();
+        mq.getAccountDate();
+
+//         ... 处理自己的业务
     }
 }
