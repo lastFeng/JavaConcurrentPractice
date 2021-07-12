@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 // 单个全局变量
 var GlobalVariable = "Hello World"
@@ -20,6 +23,7 @@ func main() {
 	fmt.Println(GlobalVariable, def1, def2)
 	variable()
 	primaryType()
+	primaryTypeTrans()
 	complexType()
 }
 
@@ -75,5 +79,54 @@ func primaryType() {
 	fmt.Println(a1, a2, a3, a4, a5, b1, b2, b3, b4, b5, c1, c2, d1, d2, d3, d4, d5, e1, e2, e3, e4, f, utf, f2)
 }
 
+func primaryTypeTrans() {
+	a := 1
+	f := float64(a)
+	b := "2"
+
+	fmt.Println("显式转换为 T(v): T为类型， v为要转换的值(没有隐式转换的操作)")
+	fmt.Println(a, f, b)
+	fmt.Printf("%T %T", f, a)
+	fmt.Println()
+
+	var n int64 = 12
+	var n1 int8 = int8(n) + 127   // 编译成功
+	//var n2 int8 = int8(n) + 128 // 编辑器报错，编译失败
+	fmt.Println(n1)
+
+	var n2 float64 = 4.65
+	s1 := fmt.Sprintf("%d", n1)
+	s2 := fmt.Sprintf("%f", n2)
+	fmt.Println(s1, s2)
+	fmt.Printf("%T %T", s1, s2)
+	fmt.Println()
+	s3 := string(n)   // 这个只转换成ascii码表的内容
+	fmt.Println(s3)
+	s4 := strconv.FormatInt(n, 10)  // 通过包进行转换--导入strconv包
+	fmt.Println(s4)
+	s5 := strconv.FormatFloat(n2, 'f', 3, 64)
+	fmt.Println(s5)
+
+	f1, _ := strconv.ParseInt(s4, 10, 64)
+	fmt.Println(f1)
+	f2, err2 := strconv.ParseFloat(s5, 64)
+	fmt.Println(f2, err2)
+}
+
 func complexType() {
+	// 1. 指针
+	age := 18
+	fmt.Println(&age)
+	age2 := 18
+	fmt.Println( &age2)
+
+	str1 := "hello"
+	ptr1 := &str1
+	str2 := "hello"
+	ptr2 := &str2
+	fmt.Println(&str1 == &str2)
+	fmt.Println(&ptr1 == &ptr2)
+	fmt.Println(*ptr1)
+
+	// 2.
 }
